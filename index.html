@@ -6,6 +6,10 @@
 </head>
 <body>
     <h1>WEATHER + GEOLOCATION !!!</h1>
+    <div id="content">Selected this element
+        <p id="p1">Hello World!</p>
+    </div>
+    
     <script type="text/javascript">
         var options = {
               enableHighAccuracy: true,
@@ -20,6 +24,14 @@
               console.log(`Latitude : ${crd.latitude}`);
               console.log(`Longitude: ${crd.longitude}`);
               console.log(`More or less ${crd.accuracy} meters.`);
+              
+              var str = 'Your current position is:<br>';
+              str += `Latitude : ${crd.latitude}<br>`;
+              str += `Longitude: ${crd.longitude}<br>`;
+              str += `More or less ${crd.accuracy} meters.<br>`;
+                
+              document.getElementById("p1").innerHTML = str;
+                
             };
             
             function error(err) {
