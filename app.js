@@ -22,20 +22,35 @@ window.onload = function() {
     var latitude  = crd.latitude;
     var longitude = crd.longitude;
     
-    var api = `http://api.openweathermap.org/data/2.5/weather?`;
-    api += `lat=35`;
-    api += `&lon=139`;
-    api += `&appid=eb7cf282541ad0aeab5e0e609161a441`;
+    var api = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?`;
+        api += `lat=${latitude}`;
+        api += `&lon=${longitude}`;
+        api += `&appid=eb7cf282541ad0aeab5e0e609161a441`;
     
     console.log(api);
     
     /* global fetch */
     fetch(api)
     .then(function(response) {
-      console.log(response.json());
       return response.json();
     }).then(function(json) {
       console.log('parsed json', json);
+      const iconUrl = "https://openweathermap.org/img/w/" 
+                      + json.weather[0].icon + ".png";
+      console.log(json.weather[0].description);
+      weather.innerHTML = json.name + ': ' 
+        + ((json.wind.deg > 0) 
+          ? "+" + json.wind.deg.toFixed(2) + "°C"
+          : "-" + json.wind.deg.toFixed(2) + "°C");
+          
+      var img = new Image();
+      
+      img.onload = function() {
+        weather.appendChild(img);
+      };
+      
+      img.src = iconUrl;
+      
     }).catch(function(ex) {
       console.log('parsing failed', ex);
     });
