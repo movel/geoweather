@@ -38,7 +38,10 @@ window.onload = function() {
       const iconUrl = "https://openweathermap.org/img/w/" 
                       + json.weather[0].icon + ".png";
       console.log(json.weather[0].description);
-      weather.innerHTML = '<div>' + json.name + ': ' + '<br>' 
+      weather.innerHTML = '<div>' + json.name 
+        + ', ' + json.sys.country
+        + ': ' 
+        + '<br>' 
         + '<span>'
         + ((json.wind.deg > 0) 
           ? "+" + json.wind.deg.toFixed(2) + "°C"
