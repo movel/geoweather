@@ -38,10 +38,13 @@ window.onload = function() {
       const iconUrl = "https://openweathermap.org/img/w/" 
                       + json.weather[0].icon + ".png";
       console.log(json.weather[0].description);
-      weather.innerHTML = json.name + ': ' 
+      weather.innerHTML = '<div>' + json.name + ': ' + '<br>' 
+        + '<span>'
         + ((json.wind.deg > 0) 
           ? "+" + json.wind.deg.toFixed(2) + "°C"
-          : "-" + json.wind.deg.toFixed(2) + "°C");
+          : "-" + json.wind.deg.toFixed(2) + "°C")
+        + '</span>'
+        + '</div>';
           
       var img = new Image();
       
@@ -50,6 +53,7 @@ window.onload = function() {
       };
       
       img.src = iconUrl;
+      img.className = "weather-icon";
       
     }).catch(function(ex) {
       console.log('parsing failed', ex);

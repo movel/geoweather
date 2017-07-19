@@ -1,5 +1,6 @@
 .gradient {
   height: 100%;
+  max-width: 782px;
   width: 100%;
   background-color: red;
   background-image:
@@ -8,6 +9,27 @@
       yellow,
       #f06d06 50%
     );
-  margin: 0;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+}
+
+#weather div {
+  font-size: 24px;
+  margin: 0 auto;
+}
+
+#weather span {
+  display: block;
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+.weather-icon {
+  margin: 0 auto;
   padding: 0;
+}
+
+#out {
+  font-weight: bold;
 }
