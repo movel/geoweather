@@ -4,13 +4,27 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="style.css" type="text/css" />
-  <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
   <div class="gradient">
-    <h1>WEATHER + GEOLOCATION !!!</h1>
-    <div id="weather">Local Weather</div>
+    <h1>LOCAL WEATHER</h1>
+    
+    <div class="city">City, country</div>
+    <br>
+    <!-- call 'toggleState' whenever clicked -->
+    <div class="f_to_c">
+      <div class="degF"> °F </div>
+      <label class="switch">
+        <input type="checkbox" id="btn" value=" °C " class="off" onclick="toggleState(this)" checked />
+        <span class="slider"></span>
+      </label>
+      <div class="degC"> °C </div>
+    </div>
+    <div class="temp"><span class="temp-span">Temp °C</span><br></div>
+    
     <div id="out">Image</div>
   </div>
+  
+  <script type="text/javascript" src="app.js"></script>
 </body>
 </html>

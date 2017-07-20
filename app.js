@@ -1,15 +1,43 @@
 'use strict';
 
+/* define the toggle function */
+function toggleState(item) {
+  
+  var on = document.getElementsByClassName("temp-span");
+  
+  if(item.className == "on") {
+    item.className="off";
+
+    var tempCelc = parseFloat(on[0].innerHTML);
+    
+    tempCelc = ((tempCelc - 32) / 9 * 5).toFixed(2);
+    
+    on[0].innerHTML = (tempCelc > 0) ? ("+" + tempCelc + " °C ") : ("" + tempCelc + " °C ");
+    
+  } else {
+    item.className="on";
+
+    var tempFar = parseFloat(on[0].innerHTML);
+    
+    tempFar = (tempFar * 9 / 5 + 32).toFixed(2);
+    
+    on[0].innerHTML = (tempFar> 0) ? ("+" + tempFar + " °F ") : ("" + tempFar + " °F ");
+  }
+}
+
 window.onload = function() {
   var options = {
         enableHighAccuracy: true,
         timeout: 5000,
         maximumAge: 0
   };
-  
+
   window.document.body.style.background = 'tomato';
   
   var weather = document.getElementById("weather");
+  var city = document.getElementsByClassName("city");
+  var temp = document.getElementsByClassName("temp");
+  var tempSpan = document.getElementsByClassName("temp-span");
   var output = document.getElementById("out");
   
   if (!navigator.geolocation){
@@ -37,22 +65,27 @@ window.onload = function() {
       console.log('parsed json', json);
       const iconUrl = "https://openweathermap.org/img/w/" 
                       + json.weather[0].icon + ".png";
-      console.log(json.weather[0].description);
-      weather.innerHTML = '<div>' + json.name 
-        + ', ' + json.sys.country
-        + ': ' 
-        + '<br>' 
-        + '<span>'
-        + ((json.wind.deg > 0) 
-          ? "+" + json.wind.deg.toFixed(2) + "°C"
-          : "-" + json.wind.deg.toFixed(2) + "°C")
-        + '</span>'
-        + '</div>';
+      //console.log(json.weather[0].description);
+      // weather.innerHTML = '<div>' + json.name 
+      //   + ', ' + json.sys.country
+      //   + ': ' 
+      //   + '<br>' 
+      //   + '<span>'
+      //   + ((json.wind.deg > 0) 
+      //     ? "+" + json.wind.deg.toFixed(2) + " °C"
+      //     : "-" + json.wind.deg.toFixed(2) + " °C")
+      //   + '</span>'
+      //   + '</div>';
+        
+      city[0].innerHTML =  '' + json.name + ', ' + json.sys.country;
+      tempSpan[0].innerHTML =  ((json.wind.deg > 0) 
+                        ? "+" + json.wind.deg.toFixed(2) + " °C"
+                        : "-" + json.wind.deg.toFixed(2) + " °C");
           
       var img = new Image();
       
       img.onload = function() {
-        weather.appendChild(img);
+        temp[0].appendChild(img);
       };
       
       img.src = iconUrl;

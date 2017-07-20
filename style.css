@@ -14,12 +14,19 @@
   text-align: center;
 }
 
-#weather div {
+#weather div,
+.city, 
+.temp {
   font-size: 24px;
   margin: 0 auto;
+  font-weight: bold;
 }
 
-#weather span {
+.temp {
+  display: block;
+}
+
+.temp-span {
   display: block;
   margin-top: 25px;
   font-weight: bold;
@@ -37,4 +44,61 @@
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
+}
+
+/* define on/off styles */
+.degC, .degF {
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+/* toggle button switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-bottom: -7px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #D9390B;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #D9390B;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #D9390B;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
