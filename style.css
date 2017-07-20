@@ -28,8 +28,13 @@
 .weather-icon {
   margin: 0 auto;
   padding: 0;
+  width: 15%;
+  height: auto;
 }
 
 #out {
   font-weight: bold;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
 }
