@@ -66,17 +66,6 @@ window.onload = function() {
       console.log('parsed json', json);
       const iconUrl = "https://openweathermap.org/img/w/" 
                       + json.weather[0].icon + ".png";
-      //console.log(json.weather[0].description);
-      // weather.innerHTML = '<div>' + json.name 
-      //   + ', ' + json.sys.country
-      //   + ': ' 
-      //   + '<br>' 
-      //   + '<span>'
-      //   + ((json.wind.deg > 0) 
-      //     ? "+" + json.wind.deg.toFixed(2) + " °C"
-      //     : "-" + json.wind.deg.toFixed(2) + " °C")
-      //   + '</span>'
-      //   + '</div>';
         
       city[0].innerHTML =  '' + json.name + ', ' + json.sys.country;
       tempSpan[0].innerHTML =  ((json.main.temp > 0) 
