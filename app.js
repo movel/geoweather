@@ -34,7 +34,7 @@ window.onload = function() {
 
   window.document.body.style.background = 'tomato';
   
-  var weather = document.getElementById("weather");
+  //var weather = document.getElementById("weather");
   var city = document.getElementsByClassName("city");
   var temp = document.getElementsByClassName("temp");
   var tempSpan = document.getElementsByClassName("temp-span");
@@ -54,6 +54,7 @@ window.onload = function() {
         api += `lat=${latitude}`;
         api += `&lon=${longitude}`;
         api += `&appid=eb7cf282541ad0aeab5e0e609161a441`;
+        api += `&units=metric`;
     
     console.log(api);
     
@@ -78,9 +79,9 @@ window.onload = function() {
       //   + '</div>';
         
       city[0].innerHTML =  '' + json.name + ', ' + json.sys.country;
-      tempSpan[0].innerHTML =  ((json.wind.deg > 0) 
-                        ? "+" + json.wind.deg.toFixed(2) + " °C"
-                        : "-" + json.wind.deg.toFixed(2) + " °C");
+      tempSpan[0].innerHTML =  ((json.main.temp > 0) 
+                        ? "+" + json.main.temp.toFixed(2) + " °C"
+                        : "-" + json.main.temp.toFixed(2) + " °C");
           
       var img = new Image();
       
