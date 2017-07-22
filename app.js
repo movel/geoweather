@@ -89,7 +89,11 @@ window.onload = function() {
   
     /* global Image */
     var img = new Image();
-    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=420x280&sensor=false";
+    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" 
+              + latitude 
+              + "," 
+              + longitude 
+              + "&zoom=13&size=320x280&sensor=false";
   
     output.appendChild(img);
   
